@@ -4,7 +4,7 @@ def anagrams(string)
   return [string, string.reverse] if string.length == 2
   string.each_char.with_index do |letter, index| # O(n)
 
-    sub_case = string.slice(0, index) + string.slice(index + 1, string.length - 1)
+    sub_case = string.slice(0, index) + string.slice(index + 1, string.length)
     anagrams(sub_case).each do |sub_ana|    # O(n^n-1) or something really really big
       anagram1 = letter + sub_ana
       anagram2 = sub_ana + letter

@@ -52,16 +52,13 @@ end
 # bad_two_sum?(arr, 10) # => should be false
 
 def pair_sum?(array, target)
-  frequencies = Hash.new(0)
-  array.each { |el| frequencies[el] += 1 }
+  frequencies = Hash.new
+
   array.each do |num|
     missing = target - num
-    if missing == num
-      return true if frequencies[missing] > 1
-    else
-      return true if frequencies[missing] > 0
-    end
+    return true if frequencies[missing]
+    frequencies[num] = true
   end
-  false
 
+  false
 end
